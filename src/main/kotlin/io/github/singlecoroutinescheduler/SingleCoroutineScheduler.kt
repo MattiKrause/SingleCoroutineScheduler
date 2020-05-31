@@ -22,6 +22,7 @@ import kotlin.coroutines.EmptyCoroutineContext
  * @param bufferCapacity The [capacity][Channel.UNLIMITED] of the underlying [Channel]
  * @param launchScope The scope in which the worker and helping coroutines are launched.
  * @param parentJob If parentJob cancels, the Instances coroutine cancels too. It is per default the Job of the [launchScope]
+ * @param dispatcher The [CoroutineDispatcher] of the launched coroutines.
  * @param name The name of the worker coroutine
  * @param throwOnCapacityExceeded If this is true than a [CapacityExceededException] is thrown in [schedule] rather than blocking
  * @param ignoreExceptions If this is true, then exceptions won't crash the worker coroutine,
@@ -33,6 +34,7 @@ class SingleCoroutineScheduler(
     private val bufferCapacity: Int = Channel.UNLIMITED,
     private val launchScope: CoroutineScope = GlobalScope,
     private val parentJob: Job? = launchScope.coroutineContext[Job],
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
     name: String? = null,
     private val throwOnCapacityExceeded: Boolean = false,
     private val ignoreExceptions: Boolean = true
@@ -114,7 +116,7 @@ class SingleCoroutineScheduler(
      */
     override fun start() {
         if (workerJobLazy == null) {
-            context = EmptyCoroutineContext + Job(parent = parentJob)
+            context = EmptyCoroutineContext + Job(parent = parentJob) + dispatcher
             workerChannelLazy = Channel(bufferCapacity)
             workerJobLazy = launchScope.launch(context + CoroutineName(name)) {
                 try {
