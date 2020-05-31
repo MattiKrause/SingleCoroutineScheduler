@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleCoroutineScheduler.schedule - SingleCoroutineScheduler</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="../index.html">io.github.singlecoroutinescheduler</a>&nbsp;/&nbsp;<a href="index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="./schedule.html">schedule</a><br/>
+<br/>
+<h1>schedule</h1>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable)"></a>
+<code><span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-runnable.html"><span class="identifier">Runnable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adds a task for the coroutine worker. If <a href="#">throwOnCapacityExceeded</a> is true, then <a href="schedule-or-throw.html">scheduleOrThrow</a> is used, otherwise
+<a href="schedule-blocking.html">scheduleBlocking</a> is used.</p>
+<h3>Parameters</h3>
+<p><a name="task"></a>
+<code>task</code> - The task that is to be executed.</p>
+<p><strong>Return</strong><br/>
+A Disposable, which can be used to prevent execution of the task.
+Note that the canceled task is not removed from the buffer</p>
+<p><strong>See Also</strong><br/>
+<p><a href="schedule-blocking.html">scheduleBlocking</a></p>
+<p><a href="schedule-or-throw.html">scheduleOrThrow</a></p>
+</p>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(kotlin.Function0((kotlin.Unit)))"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="keyword">crossinline</span> <span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(kotlin.Function0((kotlin.Unit)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adapter from kotlin lambda to Java Runnable</p>
+<p><strong>See Also</strong><br/>
+<p><a href="./schedule.html">schedule</a></p>
+</p>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)"></a>
+<code><span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)/task">task</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-runnable.html"><span class="identifier">Runnable</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)/unit">unit</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html"><span class="identifier">TimeUnit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adds a task for the coroutine worker after a given delay.</p>
+<p>This method spawns a new coroutine. If the buffer capacity is exceeded after the delay, the new coroutine suspends.
+This method can only delay in millie seconds.</p>
+<pre><code>schedule(task = ..., delay = 1, unit = TimeUnit.MILLISECONDS)
+</code></pre>
+<p>Will delay 1 ms</p>
+<pre><code>schedule(task=..., delay = 500, unit = TimeUnit.MICROSECONDS)
+</code></pre>
+<p>Will delay 0 ms</p>
+<pre><code>schedule(task=..., delay = 5000, unit = TimeUnit.MICROSECONDS)
+</code></pre>
+<p>Will delay 5 ms</p>
+<h3>Parameters</h3>
+<p><a name="task"></a>
+<code>task</code> - The task that is to be executed after the delay.</p>
+<p><a name="delay"></a>
+<code>delay</code> - The amount of delayed time before scheduling.</p>
+<p><a name="unit"></a>
+<code>unit</code> - The <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html">TimeUnit</a> of <a href="schedule.html#io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable, kotlin.Long, java.util.concurrent.TimeUnit)/delay">delay</a></p>
+<p><strong>Return</strong><br/>
+A Disposable, which can be used to prevent execution of the task.
+Note that the canceled task is not removed from the buffer. If the delaying coroutine is still running
+at the time disposal, it is cancelled</p>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))/unit">unit</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html"><span class="identifier">TimeUnit</span></a>&nbsp;<span class="symbol">=</span>&nbsp;TimeUnit.MILLISECONDS<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adapter from kotlin lambda to Java Runnable</p>
+<p><a href="./schedule.html">see: original schedule with delay</a></p>
+</BODY>
+</HTML>

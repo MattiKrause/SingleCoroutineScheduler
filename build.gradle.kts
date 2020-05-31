@@ -28,16 +28,16 @@ configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_HIGHER
 }
 
-tasks.named<Test>("test") {
-    useJUnitPlatform()
-}
-
 tasks {
-    val dokka by getting(DokkaTask::class) {
-        outputFormat = "html"
-        outputDirectory = "$buildDir/dokka"//breaks if pointed to docs
+    fun DokkaTask.configureDokka(newOutputFormat: String) {
+        outputFormat = newOutputFormat
+
+        outputDirectory = "$projectDir/docs"
 
         configuration {
+            targets = listOf("JVM")
+            platform = "JVM"
+
             externalDocumentationLink {
                 url = URL("https://projectreactor.io/docs/core/3.3.5.RELEASE/api/")
                 packageListUrl = URL("https://projectreactor.io/docs/core/3.3.5.RELEASE/api/package-list")
@@ -47,13 +47,36 @@ tasks {
                 packageListUrl = URL("https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/package-list")
 
             }
+
+            sourceLink {
+                path = "src/main/kotlin"
+                url = "https://github.com/MattiKrause/SingleCoroutineScheduler"
+                lineSuffix = "#L"
+            }
+
+            jdkVersion = 8
         }
     }
+
+    //val dokka by getting(DokkaTask::class) {
+    //}
 
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
+    }
+
+    named<Test>("test") {
+        useJUnitPlatform()
+    }
+
+    register<DokkaTask>("dokkaGFM") {
+        configureDokka("gfm")
+    }
+
+    register<DokkaTask>("dokkaHTML") {
+        configureDokka("html")
     }
 }

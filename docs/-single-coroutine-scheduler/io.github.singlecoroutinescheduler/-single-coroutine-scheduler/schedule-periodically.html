@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleCoroutineScheduler.schedulePeriodically - SingleCoroutineScheduler</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="../index.html">io.github.singlecoroutinescheduler</a>&nbsp;/&nbsp;<a href="index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="./schedule-periodically.html">schedulePeriodically</a><br/>
+<br/>
+<h1>schedulePeriodically</h1>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)"></a>
+<code><span class="keyword">fun </span><span class="identifier">schedulePeriodically</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/task">task</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-runnable.html"><span class="identifier">Runnable</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/initialDelay">initialDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/unit">unit</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html"><span class="identifier">TimeUnit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adds a task for the coroutine worker every <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/delay.html">delay</a>.
+This task spawns a new coroutine, that only adds the task and does not execute it.
+The delay in between executions is not exact. It can take longer when the coroutine is busy working
+It can only delay in millie seconds, if your delay in ms is less than one it will be ignored:</p>
+<pre><code>schedule(task = ..., delay = 1, unit = TimeUnit.MILLISECONDS)
+</code></pre>
+<p>Will delay 1 ms</p>
+<pre><code>schedule(task=..., delay = 500, unit = TimeUnit.MICROSECONDS)
+</code></pre>
+<p>Will delay 0 ms</p>
+<pre><code>schedule(task=..., delay = 5000, unit = TimeUnit.MICROSECONDS)
+</code></pre>
+<p>Will delay 5 ms</p>
+<h3>Parameters</h3>
+<p><a name="task"></a>
+<code>task</code> - The task that is to be executed repeatedly</p>
+<p><a name="initialDelay"></a>
+<code>initialDelay</code> - The delay before the first execution of <a href="schedule-periodically.html#io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/task">task</a></p>
+<p><a name="period"></a>
+<code>period</code> - delay between each execution of <a href="schedule-periodically.html#io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/task">task</a></p>
+<p><a name="unit"></a>
+<code>unit</code> - The time unit of <a href="schedule-periodically.html#io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/initialDelay">initialDelay</a> and <a href="schedule-periodically.html#io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(java.lang.Runnable, kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit)/period">period</a></p>
+<p><strong>Return</strong><br/>
+Disposable, which can be used to prevent execution of the task.
+Note that the canceled tasks are not removed from the buffer. The periodically scheduling coroutine is cancelled.</p>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">schedulePeriodically</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))/initialDelay">initialDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))/unit">unit</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html"><span class="identifier">TimeUnit</span></a>&nbsp;<span class="symbol">=</span>&nbsp;TimeUnit.MILLISECONDS<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedulePeriodically(kotlin.Long, kotlin.Long, java.util.concurrent.TimeUnit, kotlin.Function0((kotlin.Unit)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adapter from kotlin lambda to Java Runnable</p>
+<p><a href="schedule.html">see: original schedule with delay</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleCoroutineScheduler.<init> - SingleCoroutineScheduler</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="../index.html">io.github.singlecoroutinescheduler</a>&nbsp;/&nbsp;<a href="index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="./-init-.html">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$&lt;init&gt;(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)"></a>
+<code><span class="identifier">SingleCoroutineScheduler</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$<init>(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)/bufferCapacity">bufferCapacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Channel.UNLIMITED<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$<init>(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)/launchScope">launchScope</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-scope/index.html"><span class="identifier">CoroutineScope</span></a>&nbsp;<span class="symbol">=</span>&nbsp;GlobalScope<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$<init>(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)/parentJob">parentJob</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/index.html"><span class="identifier">Job</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;launchScope.coroutineContext[Job]<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$<init>(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)/dispatcher">dispatcher</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html"><span class="identifier">CoroutineDispatcher</span></a>&nbsp;<span class="symbol">=</span>&nbsp;Dispatchers.Default<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$<init>(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$<init>(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)/throwOnCapacityExceeded">throwOnCapacityExceeded</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">, </span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$<init>(kotlin.Int, kotlinx.coroutines.CoroutineScope, kotlinx.coroutines.Job, kotlinx.coroutines.CoroutineDispatcher, kotlin.String, kotlin.Boolean, kotlin.Boolean)/ignoreExceptions">ignoreExceptions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span></code>
+<p>This <a href="#">reactor.core.scheduler</a> runs on a single kotlinx coroutine. This means that is class is NOT anticipated for
+large amounts of work, it is rather used to synchronize different subscribers on different publishers, while having
+a small footprint when not used. This class also supports delayed schedule and periodical schedule. For these purposes,
+new coroutines are spawned, they are also cancelled in case this scheduler is cancelled. The initialization of the
+initial coroutine is executed lazily, meaning it is only started when <a href="start.html">start</a> is called or when work is coming in.
+The optional parameter parentJob determines to which <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/index.html">Job</a> the lifecycle of the new scheduler is bound. If the parent
+cancels, the scheduler cancels too.</p>
+<h3>Parameters</h3>
+<p><a name="bufferCapacity"></a>
+<code>bufferCapacity</code> - The <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.channels/-channel/-factory/-u-n-l-i-m-i-t-e-d.html">capacity</a> of the underlying <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.channels/-channel/index.html">Channel</a></p>
+<p><a name="launchScope"></a>
+<code>launchScope</code> - The scope in which the worker and helping coroutines are launched.</p>
+<p><a name="parentJob"></a>
+<code>parentJob</code> - If parentJob cancels, the Instances coroutine cancels too. It is per default the Job of the <a href="#">launchScope</a></p>
+<p><a name="dispatcher"></a>
+<code>dispatcher</code> - The <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of the launched coroutines.</p>
+<p><a name="name"></a>
+<code>name</code> - The name of the worker coroutine</p>
+<p><a name="throwOnCapacityExceeded"></a>
+<code>throwOnCapacityExceeded</code> - If this is true than a <a href="../-capacity-exceeded-exception/index.html">CapacityExceededException</a> is thrown in <a href="schedule.html">schedule</a> rather than blocking</p>
+<p><a name="ignoreExceptions"></a>
+<code>ignoreExceptions</code> - If this is true, then exceptions won't crash the worker coroutine,
+meaning that also it won't crash the parent job.</p>
+<p><strong>Author</strong><br/>
+Matti Krause</p>
+</BODY>
+</HTML>

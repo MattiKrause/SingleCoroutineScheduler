@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>alltypes - SingleCoroutineScheduler</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<h3>All Types</h3>
+<table>
+<tbody>
+<tr>
+(JVM) 
+<h5><a href="../io.github.singlecoroutinescheduler/-capacity-exceeded-exception/index.html">io.github.singlecoroutinescheduler.CapacityExceededException</a></h5>
+<p>This class can be thrown by <a href="../io.github.singlecoroutinescheduler/-single-coroutine-scheduler/index.html">SingleCoroutineScheduler</a>, specifically by <a href="../io.github.singlecoroutinescheduler/-single-coroutine-scheduler/schedule-or-throw.html">SingleCoroutineScheduler.scheduleOrThrow</a></p>
+</tr>
+<tr>
+(JVM)  (extensions in package io.github.singlecoroutinescheduler)
+<h5><a href="../io.github.singlecoroutinescheduler/kotlinx.coroutines.-coroutine-scope/index.html">kotlinx.coroutines.CoroutineScope</a></h5>
+</tr>
+<tr>
+(JVM) 
+<h5><a href="../io.github.singlecoroutinescheduler/-single-coroutine-scheduler/index.html">io.github.singlecoroutinescheduler.SingleCoroutineScheduler</a></h5>
+<p>This <a href="#">reactor.core.scheduler</a> runs on a single kotlinx coroutine. This means that is class is NOT anticipated for
+large amounts of work, it is rather used to synchronize different subscribers on different publishers, while having
+a small footprint when not used. This class also supports delayed schedule and periodical schedule. For these purposes,
+new coroutines are spawned, they are also cancelled in case this scheduler is cancelled. The initialization of the
+initial coroutine is executed lazily, meaning it is only started when <a href="../io.github.singlecoroutinescheduler/-single-coroutine-scheduler/start.html">start</a> is called or when work is coming in.
+The optional parameter parentJob determines to which <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/index.html">Job</a> the lifecycle of the new scheduler is bound. If the parent
+cancels, the scheduler cancels too.</p>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

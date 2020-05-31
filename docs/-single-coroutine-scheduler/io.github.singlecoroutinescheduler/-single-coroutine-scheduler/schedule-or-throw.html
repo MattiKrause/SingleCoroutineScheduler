@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleCoroutineScheduler.scheduleOrThrow - SingleCoroutineScheduler</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="../index.html">io.github.singlecoroutinescheduler</a>&nbsp;/&nbsp;<a href="index.html">SingleCoroutineScheduler</a>&nbsp;/&nbsp;<a href="./schedule-or-throw.html">scheduleOrThrow</a><br/>
+<br/>
+<h1>scheduleOrThrow</h1>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$scheduleOrThrow(java.lang.Runnable)"></a>
+<code><span class="keyword">fun </span><span class="identifier">scheduleOrThrow</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$scheduleOrThrow(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-runnable.html"><span class="identifier">Runnable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adds a task for the coroutine worker. If the buffer capacity is exceeded, this method throws a
+<a href="../-capacity-exceeded-exception/index.html">CapacityExceededException</a> exception</p>
+<h3>Parameters</h3>
+<p><a name="task"></a>
+<code>task</code> - THe task that is to be executed</p>
+<h3>Exceptions</h3>
+<p><a name="CapacityExceededException"></a>
+<code>CapacityExceededException</code> - Throws when the buffer capacity is exceeded</p>
+<p><strong>Return</strong><br/>
+A Disposable, which can be used to prevent execution of the task.
+Note that the canceled task is not removed from the buffer</p>
+(JVM) <a name="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$scheduleOrThrow(kotlin.Function0((kotlin.Unit)))"></a>
+<code><span class="keyword">inline</span> <span class="keyword">fun </span><span class="identifier">scheduleOrThrow</span><span class="symbol">(</span><span class="keyword">crossinline</span> <span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$scheduleOrThrow(kotlin.Function0((kotlin.Unit)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
+<p>Adapter from kotlin lambda to Java Runnable</p>
+<p><strong>See Also</strong><br/>
+<p><a href="./schedule-or-throw.html">scheduleOrThrow</a></p>
+</p>
+</BODY>
+</HTML>

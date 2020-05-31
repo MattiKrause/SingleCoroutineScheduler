@@ -1,0 +1,4 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:io.github.singlecoroutinescheduler$singleCoroutineScheduler(kotlinx.coroutines.CoroutineScope, kotlin.Int, kotlinx.coroutines.Job, kotlin.String, kotlin.Boolean)io.github.singlecoroutinescheduler/kotlinx.coroutines.-coroutine-scope/single-coroutine-scheduler.html
+io.github.singlecoroutinescheduler
