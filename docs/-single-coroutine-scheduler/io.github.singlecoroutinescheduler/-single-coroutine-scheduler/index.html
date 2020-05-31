@@ -9,7 +9,7 @@
 <br/>
 <h1>SingleCoroutineScheduler</h1>
 (JVM) <code><span class="keyword">class </span><span class="identifier">SingleCoroutineScheduler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/scheduler/Scheduler.html"><span class="identifier">Scheduler</span></a></code>
-<p>This <a href="#">reactor.core.scheduler</a> runs on a single kotlinx coroutine. This means that is class is NOT anticipated for
+<p>This <a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/scheduler/Scheduler.html">reactor.core.scheduler.Scheduler</a> runs on a single kotlinx coroutine. This means that is class is NOT anticipated for
 large amounts of work, it is rather used to synchronize different subscribers on different publishers, while having
 a small footprint when not used. This class also supports delayed schedule and periodical schedule. For these purposes,
 new coroutines are spawned, they are also cancelled in case this scheduler is cancelled. The initialization of the
@@ -22,7 +22,7 @@ cancels, the scheduler cancels too.</p>
 <p><a name="launchScope"></a>
 <code>launchScope</code> - The scope in which the worker and helping coroutines are launched.</p>
 <p><a name="parentJob"></a>
-<code>parentJob</code> - If parentJob cancels, the Instances coroutine cancels too. It is per default the Job of the <a href="#">launchScope</a></p>
+<code>parentJob</code> - If parentJob cancels, the Instances coroutine cancels too. It is per default the Job of the launchScope</p>
 <p><a name="dispatcher"></a>
 <code>dispatcher</code> - The <a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html">CoroutineDispatcher</a> of the launched coroutines.</p>
 <p><a name="name"></a>
@@ -43,7 +43,7 @@ Matti Krause</p>
 <h4><a href="-init-.html">&lt;init&gt;</a></h4>
 </td>
 <td>
-<p>This <a href="#">reactor.core.scheduler</a> runs on a single kotlinx coroutine. This means that is class is NOT anticipated for
+<p>This <a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/scheduler/Scheduler.html">reactor.core.scheduler.Scheduler</a> runs on a single kotlinx coroutine. This means that is class is NOT anticipated for
 large amounts of work, it is rather used to synchronize different subscribers on different publishers, while having
 a small footprint when not used. This class also supports delayed schedule and periodical schedule. For these purposes,
 new coroutines are spawned, they are also cancelled in case this scheduler is cancelled. The initialization of the
@@ -91,7 +91,7 @@ scheduling coroutines.</p>
 <h4><a href="schedule.html">schedule</a></h4>
 </td>
 <td>
-<p>Adds a task for the coroutine worker. If <a href="#">throwOnCapacityExceeded</a> is true, then <a href="schedule-or-throw.html">scheduleOrThrow</a> is used, otherwise
+<p>Adds a task for the coroutine worker. If throwOnCapacityExceeded is true, then <a href="schedule-or-throw.html">scheduleOrThrow</a> is used, otherwise
 <a href="schedule-blocking.html">scheduleBlocking</a> is used.</p>
 <code><span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="io.github.singlecoroutinescheduler.SingleCoroutineScheduler$schedule(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<a href="https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-runnable.html"><span class="identifier">Runnable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://projectreactor.io/docs/core/3.3.5.RELEASE/api/reactor/core/Disposable.html"><span class="identifier">Disposable</span></a></code>
 <p>Adapter from kotlin lambda to Java Runnable</p>
